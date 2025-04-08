@@ -1,0 +1,32 @@
+{
+  "title": "Why Join City AI Connect?",
+  "lede": "Figuring out how to use generative AI in your city hall? Join City AI Connect to learn from local officials in other cities and experts that power the platform. City AI Connect is a hub for local officials to ideate, collaborate, and accelerate the use of generative artificial intelligence to improve public services for residents across the globe. <br/><br/>As part of City AI Connect, local officials from any part of the world can:",
+  "joinPrompt": "Once verified by the City AI Connect team, your log-in information will be automatically sent to your government-issued email.",
+  "primaryContent": [
+    {
+      "title": "Exchange Successful Ideas",
+      "order": 0,
+      "content": "Share and discover ideas that work and real-world use cases specific to generative AI in urban settings."
+    },
+    {
+      "title": "Network with Cities Globally",
+      "order": 2,
+      "content": "Connect with like-minded city leaders to collaborate on practical solutions."
+    },
+    {
+      "title": "Receive Insights from Experts",
+      "order": 4,
+      "content": "Gain guidance from leading generative AI experts at the Bloomberg Center for Government Excellence and the Bloomberg Center for Cities at Harvard University."
+    },
+    {
+      "title": "Gain Access to our Resource Hub",
+      "order": 1,
+      "content": "Access a repository of prompts, guidelines, policies, and specialized training materials for cities using generative AI."
+    },
+    {
+      "title": "Engage in In-Depth Discussions",
+      "order": 3,
+      "content": "Join events that will address early-stage questions and challenges in implementing generative AI in city management."
+    }
+  ]
+}

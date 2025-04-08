@@ -1,0 +1,99 @@
+@import "styles/utils/index";
+
+.base,
+.containerBlock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transition: all 0.7s ease-out;
+}
+
+.link {
+  &:hover,
+  &:focus,
+  &:focus-within,
+  &:active {
+    .containerBlock {
+      gap: 24px;
+    }
+  }
+}
+
+.base {
+  @include remove-button-appearance;
+  cursor: pointer;
+
+  width: 100%;
+  justify-content: center;
+  padding: 12px 16px;
+
+  border-radius: 6px;
+  white-space: nowrap;
+
+  background: $white;
+
+  &.dark {
+    background: $blue;
+  }
+
+  &.disable {
+    background-color: #619a8c33;
+  }
+
+  &.dark {
+    .icon {
+      path {
+        stroke: $white !important;
+      }
+    }
+    .text {
+      color: $white !important;
+    }
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    .containerBlock {
+      gap: 24px;
+    }
+  }
+}
+
+.containerBlock {
+  align-items: baseline;
+  width: fit-content;
+  gap: 12px;
+
+  .text {
+    font-family: "TitlingGothicFB";
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 43px;
+    letter-spacing: 0em;
+    text-align: left;
+
+    color: $blue;
+  }
+
+  .icon {
+    display: flex;
+    height: 18px;
+    max-width: 18px;
+
+    svg {
+      width: 100%;
+    }
+  }
+
+  &.disable {
+    span {
+      color: $white !important;
+    }
+    .icon {
+      path {
+        stroke: $white !important;
+      }
+    }
+  }
+}

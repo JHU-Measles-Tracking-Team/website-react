@@ -1,0 +1,223 @@
+@import "styles/utils/index";
+
+.base {
+  position: sticky;
+  z-index: 3000;
+  top: 0;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  @media (max-height: 422px) {
+    background-size: cover;
+  }
+  background-size: contain;
+  background-position: top center;
+  background-color: $blue;
+  transition: background-color $overlay-shift;
+
+  @include media($min-md) {
+    .logo {
+      margin-right: auto;
+    }
+  }
+
+  @include media($max-md) {
+    padding-top: 0 !important;
+  }
+}
+.container {
+  transition: background-color $overlay-shift;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include media($min-md) {
+    margin: auto;
+    width: calc(100% - 64px);
+    border-bottom: 1px solid rgba($white, 0);
+    transition: border-color $interaction-shift;
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+
+  @include media($min-md) {
+    height: 116px;
+  }
+  @include media($max-md) {
+    height: 62px;
+  }
+}
+
+.smaller {
+  img {
+    width: 175px !important;
+    height: 80px !important;
+    transition: width $interaction-shift, height $interaction-shift;
+  }
+}
+
+.searchBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 1;
+
+  @include media($min-md) {
+    max-width: 400px;
+    margin-left: auto;
+  }
+  @include media($max-md) {
+    width: 100%;
+  }
+}
+
+.navWrap {
+  @include media($min-md) {
+    display: flex;
+    margin-left: auto;
+  }
+
+  @include media($max-md) {
+    display: flex;
+    flex-direction: column;
+
+    @include vw-container($lg, $md);
+    padding-top: 60px;
+    padding-bottom: 40px;
+
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity $overlay-shift, visibility $overlay-shift;
+    position: fixed;
+    z-index: 3000;
+    top: 61.4px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: $blue;
+    overflow: auto;
+    &.open {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+.menuWrap {
+  display: none;
+  @include media($max-md) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .searchBlock,
+    .menuBlock {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      svg {
+        cursor: pointer;
+
+        path,
+        line,
+        circle {
+          stroke: white;
+        }
+      }
+    }
+
+    &.open {
+      .searchBlock {
+        &.searchOpen {
+          background: $blue;
+        }
+      }
+
+      .menuBlock {
+        &.menuOpen {
+          background: $blue;
+        }
+      }
+    }
+  }
+}
+
+.bottom {
+  @include media($min-md) {
+    display: none;
+  }
+
+  padding-top: 24px;
+  padding-bottom: 32px;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 24px;
+  }
+
+  .sectionBlock {
+    padding-top: 24px;
+    border-top: 1px solid #acbad1;
+    display: flex;
+    flex-direction: column;
+
+    &.languageSelector {
+      padding-top: 16px;
+      margin-top: auto;
+    }
+
+    .sectionTitle {
+      margin-top: 0;
+      margin-bottom: 10px;
+
+      font-style: normal;
+      font-weight: 500;
+      font-size: 20.25px;
+      line-height: 25px;
+
+      display: flex;
+      align-items: center;
+
+      color: #ffffff;
+    }
+  }
+}
+
+.mobileNavBtn {
+  @include remove-button-appearance;
+  cursor: pointer;
+  background-color: transparent;
+
+  width: 24px;
+
+  svg {
+    width: 100%;
+  }
+}
+
+.joinButtonBlock {
+  @include media($max-md) {
+    display: none;
+  }
+}
+.joinButtonBlockMobile {
+  margin-top: auto;
+  @include media($min-md) {
+    display: none;
+  }
+}
+
+.disable {
+  display: none;
+}

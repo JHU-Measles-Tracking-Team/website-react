@@ -1,0 +1,39 @@
+.tabs {
+  width: 100%;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #f0f0f0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.button:hover {
+  background: #e0e0e0;
+}
+
+.buttonActive {
+  background: #007bff;
+  color: white;
+}
+
+.content {
+  position: relative;
+}
+
+.pane {
+  display: none;
+}
+
+.paneActive {
+  display: block;
+} 

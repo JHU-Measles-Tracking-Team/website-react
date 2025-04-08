@@ -1,0 +1,120 @@
+resources:
+  repositories:
+    - repository: citiAiConnectSource
+      type: github
+      endpoint: github.com_cwsgithubsvc
+      name: fgh-global/clair
+      trigger:
+        tags:
+          include:
+          - '*'
+        branches:
+          include:
+          - refs/tags/*
+          - main
+          - release/*
+    - repository: citiAiConnectBuildTemplates
+      type: git
+      name: GovEx-BCAI/citiaiconnect-jhu-edu-devops
+      ref: refs/heads/master
+      trigger:
+        branches:
+          exclude:
+          - master
+          - develop
+
+name: $(Date:yyyyMMdd)$(Rev:.r)
+
+variables:
+- name: isScheduled
+  value: $[eq(variables['Build.Reason'], 'Schedule')]
+- group: clair
+- name: isBeta
+  ${{ if contains(variables['Build.SourceBranch'], 'beta') }}:
+    value: beta
+  ${{ else }}:
+    value: notbeta
+
+stages:
+- stage: source_check
+  displayName: Source Check
+  jobs:
+  - job: source_check
+    displayName: Source Check
+    pool: $(pool)
+    steps:
+    - task: Bash@3
+      displayName: 'Get Source Branch'
+      inputs:
+        targetType: 'inline'
+        script: |
+          echo "Source Branch: $(Build.SourceBranch)"
+    - checkout: citiAiConnectSource
+      path: citiAiConnectSource
+  - job: show_web_beta_tags
+    dependsOn: source_check
+    displayName: 'Show Web Beta Tags'
+    steps:
+    - task: Bash@3      
+      condition: or(and(startsWith(variables['build.sourceBranch'], 'refs/tags/city-ai-connect-web'), eq(variables['isBeta'], 'beta')), eq(variables['build'], 'web-dev'))
+      displayName: 'Show Web Beta Tags'
+      name: showWebBetaTags
+      inputs:
+        targetType: 'inline'
+        script: |
+          cd '$(Pipeline.Workspace)/citiAiConnectSource'          
+          gitTags=$(git tag -l --sort=-creatordate --format='%(refname:short) : %(creatordate:short)')
+          echo "$gitTags"          
+          echo "----- Show Web Tags -----"
+          gitTagsWeb=$(git tag -l --sort=-creatordate | grep web)
+          echo "$gitTagsWeb"
+          echo "----- Show Web Beta Tags -----"
+          gitTagsWebBeta=$(git tag -l --sort=-creatordate | grep web | grep beta)
+          echo "$gitTagsWebBeta"
+          echo "----- Show Latest Web Beta Tag -----"
+          gitTagsWebBetaLatest=$(git tag -l --sort=-creatordate | grep web | grep beta | head -n 1)
+          echo "$gitTagsWebBetaLatest"          
+          echo "##vso[build.addbuildtag]web-dev"
+          echo "##vso[task.setvariable variable=latestTag;isoutput=true]$gitTagsWebBetaLatest"
+          full_commit_id=$(git rev-list -1 $gitTagsWebBetaLatest)
+          commit_id=${full_commit_id:0:8}
+          gitTagsWebBetaLatestClean=$(echo $gitTagsWebBetaLatest | tr "@" - )
+          echo "##vso[build.updatebuildnumber]$gitTagsWebBetaLatestClean-$(Build.BuildNumber)"  
+  - job: show_web_tags
+    dependsOn: source_check
+    displayName: 'Show Web Tags'
+    steps:
+    - task: Bash@3      
+      condition: or(and(startsWith(variables['build.sourceBranch'], 'refs/tags/city-ai-connect-web'),eq(variables['isBeta'], 'notbeta')), eq(variables['build'], 'web'))
+      displayName: 'Show Web Tags'
+      name: showWebTags
+      inputs:
+        targetType: 'inline'
+        script: |
+          cd '$(Pipeline.Workspace)/citiAiConnectSource'
+          gitTags=$(git tag -l --sort=-creatordate --format='%(refname:short) : %(creatordate:short)')
+          echo "$gitTags"          
+          echo "----- Show Web Tags -----"          
+          gitTagsWeb=$(git tag -l --sort=-creatordate | grep -v "beta" | grep web)
+          echo "$gitTagsWeb"
+          echo "----- Show Latest Web Tag -----"          
+          gitTagsWebLatest=$(git tag -l --sort=-creatordate | grep -v "beta" | grep web | head -n 1)
+          echo "$gitTagsWebLatest"          
+          echo "##vso[build.addbuildtag]web"
+          echo "##vso[task.setvariable variable=latestTag;isoutput=true]$gitTagsWebLatest"
+          full_commit_id=$(git rev-list -1 $gitTagsWebLatest)
+          commit_id=${full_commit_id:0:8}
+          gitTagsWebLatestClean=$(echo $gitTagsWebLatest | tr "@" - )
+          echo "##vso[build.updatebuildnumber]$gitTagsWebLatestClean-$(Build.BuildNumber)"
+- stage: build_web_dev_image  
+  condition: and(succeeded(), startsWith(dependencies.source_check.outputs['show_web_beta_tags.showWebBetaTags.latestTag'], 'city-ai-connect-web'), contains(dependencies.source_check.outputs['show_web_beta_tags.showWebBetaTags.latestTag'], 'beta'))
+  displayName: Build Web Dev Image
+  dependsOn: source_check
+  jobs:  
+  - template: /jobs/build-web-dev-image.yml@citiAiConnectBuildTemplates
+- stage: build_web_image  
+  condition: and(succeeded(), startsWith(dependencies.source_check.outputs['show_web_tags.showWebTags.latestTag'], 'city-ai-connect-web'))
+  displayName: Build Web Image
+  dependsOn: source_check
+  jobs:  
+  - template: /jobs/build-web-image.yml@citiAiConnectBuildTemplates

@@ -1,0 +1,255 @@
+@import "styles/utils/index";
+
+.base,
+.background {
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.base {
+  display: flex;
+  flex-direction: column;
+
+  background-image: url("/images/hero/hero-background.svg");
+
+  .background {
+    background-image: url("/images/hero/hero.svg");
+    background-size: auto;
+    background-position-x: 50%;
+    background-position-y: 114%;
+
+    @include media($max-md) {
+      background-position-y: 114% !important;
+    }
+    @media screen and (min-width: 1572px) {
+      background-position-y: 114% !important;
+    }
+    @media screen and (min-height: 872px) {
+      background-position-y: 114% !important;
+    }
+  }
+
+  .container {
+    display: flex;
+    flex-direction: row;
+
+    @include media($max-md) {
+      flex-direction: column;
+    }
+
+    > div {
+      width: 100%;
+    }
+  }
+
+  .contentBlock {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    @include media($min-md) {
+      padding: 60px 0 100px 0;
+      flex-direction: row;
+      gap: 72px;
+    }
+
+    @include media($min-lg) {
+      padding: 100px 0 100px 0;
+      flex-direction: row;
+      gap: 82px;
+    }
+
+    @include media($max-md) {
+      flex-direction: column;
+      padding: 67px 0 92px 0;
+      gap: 52px;
+      height: initial !important;
+    }
+
+    @media screen and (min-width: 1572px) {
+      height: initial !important;
+    }
+    @media screen and (min-height: 872px) {
+      height: initial !important;
+    }
+
+    @media screen and (max-height: 900px) {
+      @media screen and (min-width: 970px) and (max-width: 1571px) {
+        padding-top: 28px !important;
+        padding-bottom: 64px !important;
+      }
+    }
+  }
+
+  .title,
+  .body p {
+    color: $white;
+  }
+  .title {
+    > * {
+      margin: 0;
+      font-family: "TitlingGothicFB";
+      text-align: left;
+
+      @include media($min-md) {
+        font-size: 48px;
+        font-weight: 400;
+        line-height: 64px;
+        letter-spacing: 0em;
+      }
+
+      @include media($max-md) {
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 43px;
+        letter-spacing: 0em;
+      }
+    }
+  }
+
+  .lede {
+    padding: 0;
+    font-family: "Proxima Nova";
+    text-align: left;
+    margin-top: 8px;
+
+    @include media($min-md) {
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 32px;
+      letter-spacing: 0em;
+    }
+
+    @include media($max-md) {
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 26px;
+      letter-spacing: 0em;
+      padding-bottom: 12px;
+    }
+  }
+
+  .body {
+    padding: 0;
+    font-family: Gentona;
+    text-align: left;
+
+    @include media($min-md) {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 19px;
+      letter-spacing: 0em;
+    }
+
+    @include media($max-md) {
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 26px;
+      letter-spacing: 0em;
+    }
+  }
+
+  .body > *:not(:last-child) {
+    padding-bottom: 32px;
+  }
+}
+
+.heroContent {
+  width: 100%;
+
+  @include media($min-md) {
+    max-width: 430px;
+    align-self: center;
+  }
+  gap: 20px;
+}
+
+.buttonBlock {
+  display: flex;
+  width: 100%;
+
+  margin-top: 32px;
+
+  > a {
+    width: 100%;
+  }
+}
+
+.logoBlock {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  span {
+    font-family: $base-font-family;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  button {
+    height: 41px !important;
+    width: 131px !important;
+  }
+}
+
+.heroImageBlock {
+  display: flex;
+  width: 100%;
+
+  .desktopBlock {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 24px;
+
+    .heroImage {
+      height: 100%;
+      .image {
+        > div {
+          background-size: contain !important;
+        }
+      }
+    }
+
+    .initial,
+    .rightBlock {
+      width: 100%;
+    }
+
+    .initial {
+      align-self: center;
+      height: 50%;
+    }
+
+    .rightBlock {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      gap: 30px;
+
+      .heroImage {
+        max-height: 50%;
+      }
+    }
+
+    @include media($max-md) {
+      display: none !important;
+    }
+  }
+
+  .mobileBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+
+    @include media($min-md) {
+      display: none !important;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+@import 'styles/utils/index';
+
+.base {
+  position: relative;
+  @include vw-container($lg);
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.mockGrid {
+  @include media($min-sm) {
+    @include grid(3);
+
+    > * {
+      height: 320px;
+    }
+  }
+}
+
+.page,
+.grid {
+  > :first-child {
+    max-width: 768px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+.page {
+  > :nth-child(2) {
+    height: 120px;
+  }
+}
+
+.mockPage {
+  max-width: none;
+  > * {
+    height: 320px;
+    margin: 64px 0;
+  }
+}
+
+.mockProduct {
+  > :first-child {
+    margin-top: 10px;
+    height: 500px;
+  }
+  > * {
+    max-width: 100%;
+  }
+  @include vw-container($md);
+  background: white;
+  min-height: 80vh;
+  padding-top: 1px;
+  margin-top: -250px;
+}

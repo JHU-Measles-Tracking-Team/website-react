@@ -1,0 +1,21 @@
+@import 'styles/utils/index';
+
+.base {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  background: #EEE;
+
+  li {
+    margin: $padding;
+  }
+
+  a {
+    color: $color-accent-secondary;
+
+    &:hover, &:active, &:focus {
+      color: $color-accent-primary;
+    }
+  }
+}

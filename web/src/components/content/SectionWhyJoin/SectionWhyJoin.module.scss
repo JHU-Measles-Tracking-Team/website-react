@@ -1,0 +1,120 @@
+@import "styles/utils/index";
+
+.base {
+  display: flex;
+  flex-direction: column;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: initial;
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    @include media($max-md) {
+      flex-direction: column;
+    }
+
+    @include vw-container($xxlg, $lg);
+  }
+
+  .contentBlock {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @include media($min-md) {
+      padding: 226px 0 226px 0;
+      gap: 60px;
+    }
+
+    @include media($max-md) {
+      padding: 60px 0 60px 0;
+      height: auto;
+      gap: 60px;
+    }
+
+    .image {
+      margin-top: 32px;
+      width: 100%;
+      max-width: 359px;
+    }
+  }
+
+  .title {
+    color: $blue;
+    margin-top: 0;
+
+    @include text-section-heading;
+
+    @include media($max-md) {
+      text-align: left;
+    }
+  }
+
+  .body,
+  .downloadPromptBlock p {
+    color: $blue;
+    padding: 0;
+
+    @include media($min-md) {
+      font-family: $base-font-family;
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 31px;
+      letter-spacing: 0em;
+      text-align: center;
+    }
+
+    @include media($max-md) {
+      font-family: $base-font-family;
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 26px;
+      letter-spacing: 0em;
+      text-align: left;
+    }
+  }
+
+  .body > *:not(:last-child) {
+    padding-bottom: 32px;
+  }
+}
+
+.primaryContent,
+.downloadPromptBlock {
+  max-width: 811px;
+
+  @include media($min-md) {
+    align-self: center;
+  }
+
+  * {
+    text-align: center;
+    color: $blue !important;
+  }
+}
+
+.highlightsBlock {
+  max-width: 1280px;
+  margin: auto;
+
+  @include grid(1, 24px);
+
+  @include media($min-md) {
+    @include grid(3, 14px);
+    > * {
+      margin-bottom: 16px;
+    }
+  }
+}
+
+.downloadPromptBlock {
+  a {
+    cursor: pointer;
+    color: $blue;
+    text-decoration: underline;
+  }
+}

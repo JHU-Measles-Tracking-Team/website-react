@@ -1,0 +1,105 @@
+@import "styles/utils/index";
+
+.base,
+.containerBlock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transition: all 0.7s ease-out;
+}
+
+.link {
+  &:hover,
+  &:focus,
+  &:focus-within,
+  &:active {
+    .base {
+      border-color: $white;
+      background-color: $blue !important;
+      span {
+        color: $white;
+      }
+    }
+  }
+}
+
+.base {
+  @include remove-button-appearance;
+  cursor: pointer;
+
+  width: 100%;
+  justify-content: center;
+
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 8px 24px 8px 24px;
+  white-space: nowrap;
+
+  background-color: $white;
+
+  &.dark {
+    background-color: $blue;
+  }
+  &.disable {
+    background-color: #619a8c33;
+  }
+
+  &.dark {
+    .icon {
+      path {
+        stroke: $white !important;
+      }
+    }
+    .text {
+      color: $white !important;
+    }
+  }
+
+  &:hover,
+  &:focus,
+  &:focus-within,
+  &:active {
+    border-color: $white;
+    background-color: $blue !important;
+    span {
+      color: $white;
+    }
+  }
+}
+
+.containerBlock {
+  align-items: baseline;
+  width: fit-content;
+  gap: 10px;
+
+  .text {
+    font-family: $base-font-family;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+
+    color: $blue;
+  }
+
+  .icon {
+    display: flex;
+    height: 18px;
+
+    svg {
+      width: 100%;
+    }
+  }
+
+  &.disable {
+    span {
+      color: $white !important;
+    }
+    .icon {
+      path {
+        stroke: $white !important;
+      }
+    }
+  }
+}

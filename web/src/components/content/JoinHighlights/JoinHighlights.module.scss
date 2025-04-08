@@ -1,0 +1,68 @@
+@import "styles/utils/index";
+
+.base {
+  display: flex;
+  flex-direction: column;
+
+  background: $white;
+
+  padding: 24px;
+  border-radius: 6px;
+  border: 1px;
+
+  @include media($min-md) {
+    height: 100%;
+    max-width: 778px !important;
+  }
+
+  .highlightItem {
+    .icon {
+      width: 44.88px;
+      height: 44px;
+      margin-bottom: 10px;
+    }
+
+    .header {
+      margin: 0;
+      margin-bottom: 4px;
+
+      font-family: $base-font-family;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 29px;
+      letter-spacing: 0em;
+      text-align: left;
+
+      width: 100%;
+      color: $blue;
+    }
+
+    .content {
+      padding: 0;
+      font-family: $base-font-family;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 24px;
+      letter-spacing: 0em;
+      text-align: left;
+      color: $black;
+    }
+  }
+
+  .contentBlock {
+    display: flex;
+    max-width: 1280px;
+    margin: auto;
+    margin-top: 26px;
+    margin-bottom: 0;
+
+    @include grid(1, 16px);
+
+    @include media($min-md) {
+      @include grid(2, 32px);
+      > * {
+        margin-bottom: 16px;
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+// -----------------------------------------------
+//    Variables
+// -----------------------------------------------
+
+// Color Roles:
+$color-accent-primary: $blue;
+$color-accent-secondary: $white;
+$color-base-font: $color-accent-secondary;
+$color-base-link: $color-accent-secondary;
+$color-base-link-hover: $color-accent-primary;
+$color-base-border: $color-accent-secondary;
+$color-foreground: $color-accent-secondary;
+$color-background: white;
+
+// Fonts:
+$em-base: 16px;
+
+$base-font-family: "Proxima Nova", "Montserrat", Helvetica, Arial, sans-serif;
+
+$base-font-size: em(16);
+$base-line-height: 1.5;
+
+$heading-font-family: "TitlingGothicFB", "Arnhem Pro", "Georgia", serif;
+$heading-font-size: em(16);
+$heading-line-height: 1.5;
+
+// Measurements:
+$padding: 16px;
+$container-padding: 32px;
+$grid-padding: $container-padding;
+
+$header-height: 120px;
+$header-height-lg: 150px;
+$sidebar-width: 400px;
+$sidebar-width-lg: 500px;
+$sidebar-width-xlg: 600px;
+
+// Depths:
+$background: 1000;
+$middleground: 2000;
+$foreground: 3000;
+
+// Animation Styles:
+$interaction-shift: 222ms ease-out;
+$layout-shift: 333ms ease-out;
+$overlay-shift: 456ms ease-out;

@@ -1,0 +1,48 @@
+@import "styles/utils/index";
+
+.base {
+  @include grid(3, 16px);
+
+  @include media($min-lg) {
+    @include grid(4, 16px);
+  }
+
+  @include media($min-xlg) {
+    @include grid(6, 16px);
+  }
+}
+
+.swatch {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  h2 {
+    @include font-size(12px);
+    font-weight: bold;
+    margin: 0;
+    padding: 12px 16px;
+  }
+}
+
+.display {
+  flex-grow: 1;
+  padding: 16px;
+  transition: background-color $layout-shift, color $layout-shift;
+  @include aspect-ratio(16, 9);
+}
+
+.info {
+  border-top: 1px solid lightgrey;
+  padding: 8px 16px;
+  @include font-size(14px);
+  font-family: monospace;
+  background: #eeeeee;
+}
+
+.path {
+  margin-bottom: 16px;
+  font-family: monospace;
+  font-weight: bold;
+  width: 100%;
+}

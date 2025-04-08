@@ -1,0 +1,35 @@
+{
+  "targetDefaults": {
+    "storybook": {
+      "dependsOn": []
+    },
+    "build-storybook": {
+      "cache": true,
+      "dependsOn": [],
+      "outputs": [
+        "{projectRoot}/storybook/storybook-static"
+      ]
+    },
+    "dev": {
+      "dependsOn": []
+    },
+    "build": {
+      "cache": true,
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "start": {
+      "dependsOn": []
+    },
+    "generate:gql-types": {
+      "cache": true,
+      "dependsOn": [
+        "^generate:gql-types"
+      ],
+      "outputs": [
+        "{projectRoot}/web/src/util/gql/__generated__"
+      ]
+    }
+  }
+}

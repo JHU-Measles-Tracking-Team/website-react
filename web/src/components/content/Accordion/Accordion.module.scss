@@ -1,0 +1,89 @@
+@import "styles/utils/index";
+
+.base {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 20px 16px 20px 16px;
+  border-radius: 6px;
+  border: 1px solid $green;
+  background-color: $white;
+  gap: 40px;
+
+  .icon {
+    display: flex;
+    height: 30px;
+    svg {
+      width: 100%;
+    }
+  }
+}
+
+.accordionHeader {
+  cursor: pointer;
+  user-select: none;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: $blue;
+
+  font-family: $base-font-family;
+  text-align: left;
+
+  @include media($min-md) {
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38px;
+    letter-spacing: 0em;
+  }
+  @include media($max-md) {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+  }
+
+  &.open {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+}
+
+.accordionTitle {
+  font-weight: bold;
+}
+
+.accordionIcon::before {
+  // content: "▶"; /* Rightward-pointing arrow */
+  transition: transform 0.2s ease;
+}
+
+.base.open .accordionIcon::before {
+  transform: rotate(90deg);
+}
+
+.accordionContent {
+  padding: 0;
+
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+
+  font-family: $base-font-family;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: $black;
+}
+
+.base.open .accordionContent {
+  max-height: 200px; /* Adjust the max height as needed */
+  padding-top: 12px;
+}

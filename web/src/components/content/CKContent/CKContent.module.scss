@@ -1,0 +1,15 @@
+@import "styles/utils/index";
+
+.base {
+  @include rich-text;
+  
+  figure {
+    img {
+      max-width: 100%;
+    }
+  }
+
+  img {
+    max-width: 100%;
+  }
+}

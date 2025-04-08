@@ -1,0 +1,90 @@
+@import "styles/utils/index";
+
+.base {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  // @include media($min-md) {
+  //   border-radius: 8px;
+  //   background: $blue-light;
+  // }
+
+  @include media($max-md) {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $white;
+    }
+
+    @include media($max-md) {
+      display: flex;
+      align-items: center;
+      border: none;
+    }
+  }
+}
+
+@include media($max-md) {
+  .href {
+    display: block;
+  }
+}
+
+.href {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.navSection {
+  cursor: pointer;
+
+  position: relative;
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.bottomNavBase {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  @include media($max-md) {
+    display: block;
+    padding-top: 32px;
+
+    > *.href:not(:first-child) {
+      padding-top: 24px;
+    }
+  }
+
+  .link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $white;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@import "styles/utils/index";
+
+.base {
+  display: flex;
+  justify-content: center;
+  position: relative !important;
+  height: 100%;
+
+  .image {
+    position: absolute;
+    min-height: 1px;
+    height: 100%;
+    width: 100%;
+
+    &.loaded {
+      opacity: 1;
+      transition: opacity 0.8s ease-in-out;
+    }
+  }
+  .under {
+    min-height: 1px;
+    height: 100%;
+    width: 100%;
+    visibility: hidden;
+  }
+}

@@ -1,0 +1,60 @@
+@import "styles/utils/index";
+
+.base {
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+
+  @include remove-button-appearance;
+
+  display: flex;
+
+  .image {
+    height: 100%;
+  }
+
+  svg {
+    height: 100%;
+  }
+
+  &.header {
+    display: flex;
+    align-self: center;
+    width: 359.94px;
+    height: 38px;
+
+    @include media($max-md) {
+      width: 227.33px;
+      height: 24px;
+    }
+  }
+
+  &.footer {
+    width: 211px;
+    height: 66px;
+
+    @include media($max-md) {
+      width: 211px;
+      height: 68px;
+    }
+  }
+
+  &.light {
+    path {
+      fill: $blue;
+    }
+  }
+  &.dark {
+    path {
+      fill: $white;
+    }
+  }
+}
+
+.mobile {
+  display: none;
+  @include media($max-md) {
+    display: block;
+    width: 223px;
+    height: 60px;
+  }
+}

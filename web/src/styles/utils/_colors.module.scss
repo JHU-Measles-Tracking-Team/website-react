@@ -1,0 +1,59 @@
+//Core colors
+$blue: #133470;
+$blue-light: #bbc2d4;
+$mint: #a7cfcb;
+$white: #fff;
+$black: #232323;
+
+//Accent colors
+$green: #A7CFCB;
+$yellow: #e4c65a;
+$orange: #f1a140;
+$purple: #A05D96;
+
+//Gradients
+$blue-gradient: linear-gradient(0deg, #000000, #000000),
+  radial-gradient(
+      70.76% 55.42% at 24.9% 40.04%,
+      rgba(19, 52, 112, 0.6) 0%,
+      rgba(19, 52, 112, 0.8) 72.79%,
+      #133470 100%
+    )
+    /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */,
+  radial-gradient(
+      80.47% 106% at 19.53% 87.89%,
+      rgba(19, 52, 112, 0.1) 0%,
+      rgba(131, 151, 186, 0.1) 100%
+    )
+    /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+
+$light-grey: #8d8e9a;
+$light-gray: #f4f4f4;
+$dark-grey: dark;
+
+$red: #a91818;
+$gray: #d9d9d9;
+$gray-medium: #8d8d8d;
+
+:export {
+  blue: $blue;
+  blue-light: $blue-light;
+  mint: $mint;
+  white: $white;
+  black: $black;
+
+  green: $green;
+  yellow: $yellow;
+  orange: $orange;
+  purple: $purple;
+
+  blue-gradient: $blue-gradient;
+
+  light-grey: $light-grey;
+  light-gray: $light-gray;
+  dark-grey: $dark-grey;
+
+  red: $red;
+  gray: $gray;
+  gray-medium: $gray-medium;
+}

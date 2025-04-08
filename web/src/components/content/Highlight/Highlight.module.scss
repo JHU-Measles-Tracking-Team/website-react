@@ -1,0 +1,101 @@
+@import "styles/utils/index";
+
+.base {
+  display: flex;
+  flex-direction: column;
+
+  background: $white;
+  padding: 28px 20px 28px 20px;
+
+  border-radius: 6px;
+  border: 1px solid $green;
+
+  @include media($min-md) {
+    max-width: 285px !important;
+  }
+
+  > * {
+    text-align: center;
+  }
+
+  &.green {
+    border: 1px solid $green !important;
+  }
+  &.orange {
+    border: 1px solid $orange !important;
+  }
+  &.purple {
+    border: 1px solid $purple !important;
+  }
+  &.yellow {
+    border: 1px solid $yellow !important;
+  }
+
+  .highlightNumber,
+  .highlightSubject {
+    text-align: center;
+  }
+
+  .highlightNumber {
+    margin-bottom: 8px;
+    color: $blue;
+
+    @include text-hightlight-heading;
+
+    @include media($min-md) {
+      font-size: 38px;
+      font-weight: 400;
+      line-height: 38px;
+      letter-spacing: 0em;
+    }
+
+    @include media($max-md) {
+      font-size: 38px;
+      font-weight: 400;
+      line-height: 38px;
+      letter-spacing: 0em;
+    }
+  }
+
+  .highlightSubject {
+    margin-bottom: 16px;
+    color: $blue;
+
+    @include text-hightlight-heading;
+
+    @include media($min-md) {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 21px;
+      letter-spacing: 0em;
+    }
+
+    @include media($max-md) {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 21px;
+      letter-spacing: 0em;
+    }
+  }
+
+  .highlightDetails {
+    color: $black;
+
+    font-family: $base-font-family;
+    text-align: left;
+
+    @include media($min-md) {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 19px;
+      letter-spacing: 0em;
+    }
+
+    @include media($max-md) {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 19px;
+      letter-spacing: 0em;
+    }
+  }
+}

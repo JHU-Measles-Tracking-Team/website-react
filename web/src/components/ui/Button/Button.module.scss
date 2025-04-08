@@ -1,0 +1,33 @@
+.base {
+  position: relative;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon svg {
+  display: block;
+}
+
+.rightIcon {
+  flex-direction: row;
+  padding-right: 0;
+}
+
+.leftIcon {
+  flex-direction: row-reverse;
+  padding-left: 0;
+}
+
+.onlyIcon {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.active {
+  position: relative;
+}
+
+.text {
+  position: relative;
+}

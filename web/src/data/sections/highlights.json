@@ -1,0 +1,33 @@
+{
+  "title": "What are we learning?",
+  "lede": "",
+  "content": "Cities everywhere are beginning to explore generative AI approaches. <br/>Here are some recent insights.",
+  "highlights": [
+    {
+      "highlight": "100",
+      "subject": "Cities",
+      "details": "On October 18, 2023, close to 100 mayors participated in the Mayors Innovation Studio at Bloomberg City Lab 2023. In collaboration with the Center for Government Excellence at Johns Hopkins University, Bloomberg Philanthropies launched City AI Connect.",
+      "borderColor": "green"
+    },
+    {
+      "highlight": "72%",
+      "subject": "Diligently Exploring",
+      "details": "While nearly three quarters of cities surveyed shared that they are exploring, testing, or implementing generative artificial intelligence (72 percent), only 11 percent have invested in building staff capacities, and just 13 percent have set policies and guidelines to govern its use.",
+      "borderColor": "orange"
+    },
+    {
+      "highlight": "Use Cases",
+      "subject": "A Range of Priorities",
+      "details": "Current use cases range from building new algorithms to inform optimal public transit scheduling or to reduce congestion, to designing chatbots that enhance citizen services and expand multi-language access.",
+      "borderColor": "purple"
+    },
+    {
+      "highlight": "100+",
+      "subject": "Possibilities",
+      "details": "As we carve out this new frontier, government officials continue to find innovative applications for AI. In addition to providing this platform for members to share uses, City AI Connect will host events and highlight case studies, resources, and latest insights.",
+      "borderColor": "yellow"
+    }
+  ],
+  "downloadPrompt": "Download the research report on the State of Gen AI in Cities, conducted by Bloomberg Philanthropies in partnership with the Centre for Public Impact, a BCG Foundation, ",
+  "downloadLabel": "here"
+}

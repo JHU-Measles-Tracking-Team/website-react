@@ -1,0 +1,122 @@
+// -----------------------------------------------
+//    Typography
+// -----------------------------------------------
+html {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+@font-face {
+  font-family: "TitlingGothicFB";
+  src: url("./../fonts/titlingGothicFB-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("./../fonts/proximanova-regular.otf") format("opentype");
+  // src: url("./../fonts/proximanova-bold.otf") format("bold");
+}
+
+@font-face {
+  font-family: "Meta Serif Pro";
+  src: url("./../fonts/meta-Serif-pro-bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Gentona";
+  src: url("./../fonts/Gentona/Gentona-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Arnhem Pro";
+  src: url("./../fonts/Arnhem/OTF/ArnhemPro-Bold.otf") format("opentype");
+}
+
+body {
+  font-size: 100%;
+  line-height: $base-line-height;
+  font-weight: 400;
+  color: $color-base-font;
+  font-family: $base-font-family;
+}
+
+a {
+  color: $color-base-link;
+  transition: all 0.3s ease-out;
+  text-decoration: none;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $color-base-link-hover;
+  }
+}
+
+// ------------------------------------------------------------
+//   Filling in H1-H6 default styling will prep the CMS editor
+// ------------------------------------------------------------
+.heading {
+  font-family: $heading-font-family;
+
+  h1 {
+    font-weight: 800;
+    @include leading-scale(1.2, 1.2, 1.2);
+  }
+}
+
+h1 {
+  // Example Use of Type/Leading Scale for Desktop/Mobile/Tablet (in that order)
+  @include type-scale(42, 32, 42);
+  @include leading-scale(1.2, 1.4, 1.5);
+  font-weight: 200;
+}
+
+h2 {
+  @include type-scale(28, 22, 24);
+  @include leading-scale(1.2, 1.4, 1.5);
+  font-weight: 200;
+}
+
+h3 {
+  @include type-scale(22, 20, 22);
+  @include leading-scale(1.2, 1.4, 1.5);
+  font-weight: 200;
+}
+
+h4 {
+}
+
+h5 {
+}
+
+h6 {
+}
+
+p {
+  padding-bottom: 15px;
+  margin: 0;
+}
+
+// Leave Lists blank if no custom styling is needed for default.
+ul {
+}
+ol {
+}
+
+blockquote {
+  border-left: 5px solid $color-base-border;
+  margin: 20px 0;
+  padding-left: 15px;
+}
+
+// Only display content to screen readers
+// See: http://a11yproject.com/posts/how-to-hide-content/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

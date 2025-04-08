@@ -1,0 +1,171 @@
+@import "styles/utils/index";
+
+.base,
+.background {
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.base {
+  display: flex;
+  flex-direction: column;
+
+  background: linear-gradient(
+      0deg,
+      rgba(193, 167, 237, 0.2),
+      rgba(193, 167, 237, 0.2)
+    ),
+    linear-gradient(0deg, #ffffff, #ffffff);
+
+  .background {
+    background-image: url("/images/about.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+
+    display: flex;
+    flex-direction: column;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: 100%;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: row;
+
+    @include media($max-md) {
+      flex-direction: column;
+    }
+  }
+
+  .contentBlock {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .aboutContent {
+      display: flex;
+
+      .contentLeft,
+      .contentRight {
+        width: 100%;
+      }
+    }
+
+    @include media($min-md) {
+      padding: 118px 0 258px 0;
+
+      .aboutContent {
+        flex-direction: row;
+        gap: 60px;
+      }
+
+      .contentRight {
+        max-width: 578px;
+      }
+    }
+
+    @include media($max-md) {
+      padding: 80px 0 170px 0;
+
+      .aboutContent {
+        flex-direction: column;
+        gap: 32px;
+      }
+    }
+
+    .logoBlock {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      gap: 40px;
+      margin-top: 32px;
+      margin-bottom: 26px;
+    }
+    .imageA {
+      margin: 0;
+      height: 34px !important;
+      width: 322.05px !important;
+
+      > {
+        background-size: contain !important;
+      }
+
+
+      // @include media($max-md) {
+      //   display: none !important;
+      // }
+    }
+
+    .imageB {
+      height: 34px !important;
+      width: 108px !important;
+      max-width: 359px !important;
+    }
+  }
+
+  .title,
+  .contentLeft,
+  .contentRight {
+    width: 100%;
+  }
+  .primaryContent,
+  .secondaryContent,
+  .secondaryContentBottom {
+    color: $black;
+    font-family: "Proxima Nova";
+    text-align: left;
+
+    @include media($max-md) {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 24px;
+      letter-spacing: 0em;
+      text-align: left;
+    }
+  }
+
+  .title {
+    color: $blue;
+    margin-top: 0;
+    text-align: left;
+
+    @include text-section-heading;
+
+    @include media($min-md) {
+      margin-bottom: 24px;
+    }
+
+    @include media($max-md) {
+      margin-bottom: 32px;
+    }
+  }
+}
+
+.primaryContent {
+  @include media($min-md) {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+  }
+}
+
+.secondaryContent {
+  @include media($min-md) {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+  }
+}
+.secondaryContentBottom {
+  @include media($min-md) {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+  }
+}

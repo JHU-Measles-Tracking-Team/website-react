@@ -1,0 +1,76 @@
+@import "styles/utils/index";
+
+/* Add class names that implement corresponding text style mixins */
+
+.text-xxl {
+  @include text-xxl;
+}
+.text-xl {
+  @include text-xl;
+}
+.text-l {
+  @include text-l;
+}
+.text-m {
+  @include text-m;
+}
+.text-s {
+  @include text-s;
+}
+.text-xs {
+  @include text-xs;
+}
+.text-xxs {
+  @include text-xxs;
+}
+
+/* Display Styles: */
+
+.base {
+  @include media($max-sm) {
+    @include grid(1, 16px);
+  }
+
+  @include media($min-sm) {
+    @include grid(2, 16px);
+  }
+}
+
+.swatch {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.display {
+  flex-grow: 1;
+  padding: 16px;
+  transition: background-color $layout-shift, color $layout-shift;
+
+  .dark & {
+    background: #3b3a3a;
+    color: white;
+  }
+
+  h2 {
+    @include font-size(14px);
+    font-weight: bold;
+    margin: 0 0 12px;
+    padding: 0;
+  }
+}
+
+.info {
+  border-top: 1px solid lightgrey;
+  padding: 8px 16px;
+  @include font-size(14px);
+  font-family: monospace;
+  background: #eeeeee;
+}
+
+.path {
+  margin-bottom: 16px;
+  font-family: monospace;
+  font-weight: bold;
+  width: 100%;
+}

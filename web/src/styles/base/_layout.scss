@@ -1,0 +1,64 @@
+/* -----------------------------------------------
+Layout
+----------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased; // helps make fonts closer to designed versions
+  -moz-osx-font-smoothing: grayscale; // helps make fonts closer to designed versions
+}
+
+body,
+#__next,
+#font-provider {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+hr {
+  clear: both;
+  display: block;
+  height: 1px;
+  padding: 0;
+  margin: 20px 0;
+  border: none;
+  background: $color-base-border;
+  @include media($min-md) {
+    margin: 40px 0;
+  }
+}
+
+// Default Data Table
+table {
+  width: 100%;
+  margin: 30px 0;
+  border: 1px solid $color-base-border;
+
+  th,
+  td {
+    text-align: center;
+    padding: 15px;
+    border: 1px solid $color-base-border;
+  }
+
+  caption,
+  tfoot {
+    padding: 15px;
+  }
+}
+
+// Mobile Data Table
+.table-wrapper {
+  @include table-mobile-collapse(white, $color-accent-primary);
+}

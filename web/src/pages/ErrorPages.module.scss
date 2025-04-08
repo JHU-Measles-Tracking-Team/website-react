@@ -1,0 +1,18 @@
+@import "styles/utils/index";
+
+.base {
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    text-align: center;
+    padding-top: 300px;
+
+    @include media($min-md) {
+      padding-top: 200px;
+    }
+  }
+}

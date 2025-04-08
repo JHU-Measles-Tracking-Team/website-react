@@ -1,0 +1,82 @@
+@mixin text-xxl {
+  @include type-scale(67.34px, 48.83px);
+  @include leading-scale(85px, 61px);
+}
+
+@mixin text-xl {
+  @include type-scale(50.52px, 39.06px);
+  @include leading-scale(64px, 48px);
+}
+
+@mixin text-l {
+  @include type-scale(37.9px, 31.25px);
+  @include leading-scale(48px, 39px);
+}
+
+@mixin text-m {
+  @include type-scale(28.43px, 25px);
+  @include leading-scale(36px, 31px);
+}
+
+@mixin text-s {
+  @include type-scale(21.33px, 20px);
+  @include leading-scale(27px, 25px);
+}
+
+@mixin text-xs {
+  @include type-scale(16px);
+  @include leading-scale(20px);
+}
+
+@mixin text-xxs {
+  @include type-scale(12px, 12.8px);
+  @include leading-scale(15px, 16px);
+}
+
+@mixin text-section-heading {
+  @include type-scale(48px, 36px);
+  @include leading-scale(64px, 48px);
+  font-family: $heading-font-family !important;
+  font-weight: 400;
+  letter-spacing: 0em;
+}
+
+@mixin text-hightlight-heading {
+  font-family: $heading-font-family !important;
+  font-weight: 400;
+  letter-spacing: 0em;
+}
+
+@mixin navigation-link($dark-mode: false) {
+  color: if($dark-mode, $white, $deep-blue);
+  @include type-scale(16px, 20.25px);
+  @include leading-scale(20px, 25px);
+  font-style: normal;
+  font-weight: 400;
+  font-family: $base-font-family;
+  @include media($max-md) {
+    font-weight: 500;
+  }
+}
+
+@mixin navigation-link-footer($dark-mode: false) {
+  color: if($dark-mode, $white, $deep-blue);
+  @include type-scale(16px, 20.25px);
+  @include leading-scale(20px, 25px);
+  font-style: normal;
+  font-weight: 400;
+  font-family: $base-font-family;
+  @include media($max-md) {
+    font-weight: 500;
+  }
+}
+
+:export {
+  text-xxl: "text-xxl";
+  text-xl: "text-xl";
+  text-l: "text-l";
+  text-m: "text-m";
+  text-s: "text-s";
+  text-xs: "text-xs";
+  text-xxs: "text-xxs";
+}

@@ -1,0 +1,19 @@
+{
+  "name": "city-ai-connect",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lerna": "lerna",
+    "lerna:bump-version:beta": "lerna version --conventional-prerelease --preid beta --message 'chore: publish beta release' --yes",
+    "lerna:bump-version:stable": "lerna version --conventional-graduate --message 'chore: publish stable release' --yes"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "lerna": "^8.1.2"
+  }
+}
