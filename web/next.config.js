@@ -11,6 +11,7 @@ const nextConfig = {
   },
   images: {
     formats: ["image/avif", "image/webp"],
+    unoptimized: true,
   },
   basePath: isProd ? '/jhu-measles-tracker' : '',
   assetPrefix: isProd ? '/jhu-measles-tracker/' : '',
