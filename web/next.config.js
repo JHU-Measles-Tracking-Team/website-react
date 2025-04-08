@@ -9,10 +9,6 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, "src")],
   },
-  i18n: {
-    locales: ["en-US"],
-    defaultLocale: "en-US",
-  },
   images: {
     formats: ["image/avif", "image/webp"],
   },
