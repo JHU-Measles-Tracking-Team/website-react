@@ -13,8 +13,8 @@ const nextConfig = {
     formats: ["image/avif", "image/webp"],
     unoptimized: true,
   },
-  basePath: isProd ? '/jhu-measles-tracker' : '',
-  assetPrefix: isProd ? '/jhu-measles-tracker/' : '',
+  basePath: isProd ? '/website-react' : '',
+  assetPrefix: isProd ? '/website-react/' : '',
 };
 
 module.exports = nextConfig;
