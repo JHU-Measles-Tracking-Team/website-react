@@ -56,4 +56,4 @@ const DataWrapperTabs: React.FC<DataWrapperTabsProps> = ({ tabs }) => {
   );
 };
 
-export default DataWrapperTabs; 
+export default DataWrapperTabs;

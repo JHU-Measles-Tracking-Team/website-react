@@ -20,7 +20,7 @@ const Logo: FC<TLogoProps> = ({
   className,
 }) => {
   const router = useRouter();
-  const assetPrefix = router.basePath || '';
+  const assetPrefix = router.basePath || "";
   const handleNavigation = (href) => {
     onClicked?.();
     if (!href) return;
