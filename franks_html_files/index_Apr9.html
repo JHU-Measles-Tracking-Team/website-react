@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<!-- 
+    Website: Johns Hopkins University US Measles Tracker
+    Description: Interactive tracker for U.S. measles outbreaks showing geographic distribution,
+    trends over time, and vaccination status correlations.
+    First release: April 8, 2025
+    This version: April 9, 2025
+    Current version: 0.1.2
+    Author: github@enshengdong
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where U.S. Measles Outbreaks Are Spreading</title>
+    <style>
+        body {
+            font-family: georgia, "times new roman", times, serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e2e2e2;
+        }
+
+        .nyt-logo {
+            font-family: "times new roman", times, serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .byline {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .map-container, .chart-container {
+            margin: 40px auto;
+            width: 85%;
+            max-width: 800px;
+        }
+
+        /* Specific styling for Texas map to make it more proportional */
+        .texas-map-container {
+            margin: 40px auto;
+            width: 75%;
+            max-width: 700px;
+        }
+
+        .section-break {
+            border-top: 1px solid #e2e2e2;
+            margin: 40px 0;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .map-container, .chart-container, .texas-map-container {
+                width: 95%;
+            }
+        }
+
+        /* Add these styles to your existing CSS */
+        .map-toggle-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .toggle-button {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 8px 16px;
+            margin: 0 5px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .toggle-button.active {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+
+        .map-view {
+            display: none;
+        }
+
+        .map-view.active {
+            display: block;
+        }
+        
+        /* Footer Styles */
+        .footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e2e2e2;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .footer-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+            padding-right: 20px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-section li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-section a {
+            text-decoration: none;
+            color: #333;
+        }
+        
+        .footer-section a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.8rem;
+            border-top: 1px solid #e2e2e2;
+            margin-top: 20px;
+        }
+        
+        .team-info {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .copyright {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="nyt-logo">Johns Hopkins University US Measles Tracker</div>
+    </div>
+
+    <div class="content">
+        <h1>Where Measles Outbreaks Are Spreading in the U.S.</h1>
+        
+        <div class="byline"></div>
+        
+        <div class="date">
+            Updated April 9, 2025
+        </div>
+
+        <p>
+            Measles outbreaks across several states have raised concerns about continued spread, 
+            increasing numbers of cases and deaths, and loss of measles elimination status, 
+            highlighting the importance of measles vaccination and ongoing surveillance efforts. 
+            The map below shows the current geographic distribution of confirmed measles cases 
+            in 2025 by county across the United States.
+        </p>
+
+        <div class="map-toggle-container" id="firstMapToggle">
+            <button class="toggle-button active" data-map="map1">Cumulative Cases</button>
+            <button class="toggle-button" data-map="map2">Recent Cases</button>
+        </div>
+        <div class="map-container">
+            <div class="map-view active" id="map1">
+                <iframe title="Measles Cases" aria-label="Map" id="datawrapper-chart-Cxrb1" src="https://datawrapper.dwcdn.net/Cxrb1/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="538" data-external="1"></iframe>
+                <script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();</script>
+            </div>
+            <div class="map-view" id="map2">
+                <iframe title="Measles cases in recent 2 weeks" aria-label="Map" id="datawrapper-chart-D5Lgc" src="https://datawrapper.dwcdn.net/D5Lgc/4/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="442" data-external="1"></iframe>
+                <script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();</script>
+            </div>
+        </div>
+
+        <p>
+            The "cumulative cases" interactive map above displays confirmed measles cases by county reported in the United States since January 1, 2025.
+        </p>
+        <p>
+            The "recent cases" map displays measles cases reported during the past two weeks, highlighting areas with ongoing measles virus transmission or new importations from outside the United States.
+        </p>
+
+        <div class="section-break"></div>
+
+        <p>
+            The table below provides cumulative and recent measles case counts, and whether imported or locally acquired, 
+            for each county where confirmed measles cases were reported in 2025.
+        </p>
+
+        <div class="table-container chart-container">
+            <iframe title="" aria-label="Table" id="datawrapper-chart-VFJ8p" src="https://datawrapper.dwcdn.net/VFJ8p/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="500" data-external="1"></iframe>
+            <script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();</script>
+        </div>
+
+        <div class="section-break"></div>
+
+        <p>
+            The following time series visualizations show the progression of measles cases over time, both cumulatively 
+            across the United States and as bi-weekly incidences in selected states.
+        </p>
+        
+        <div class="map-toggle-container" id="timeseriesToggle">
+            <button class="toggle-button active" data-map="cumulative">Cumulative Cases</button>
+            <button class="toggle-button" data-map="weekly">State Incidence Curves</button>
+        </div>
+        
+        <div class="chart-container">
+            <div class="map-view active" id="cumulative">
+                <iframe title="Cumulative measles cases in the United States" aria-label="Interactive line chart" id="datawrapper-chart-hAu4Z" src="https://datawrapper.dwcdn.net/hAu4Z/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="395" data-external="1"></iframe>
+                <script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();</script>
+            </div>
+            <div class="map-view" id="weekly">
+                <iframe title="Weekly incidences in selected states" aria-label="Interactive line chart" id="datawrapper-chart-ziTC0" src="https://datawrapper.dwcdn.net/ziTC0/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="409" data-external="1"></iframe>
+                <script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();</script>
+            </div>
+        </div>
+
+        <p>
+            In the national time series the trend line shows the cumulative number of measles cases reported to date in 2025 in the United States compared with previous years. 
+            The sharp upward slope of the curve in 2025 reflects the rapid spread of measles virus this year.
+        </p>
+
+        <p>
+            The second timeseries presents the number of cases reported bi-weekly in those states reporting outbreaks in 2025, representing incidence curves, 
+            and highlighting the magnitude of the Texas outbreak relative to other states.
+        </p>
+
+        <div class="section-break"></div>
+
+        <div class="chart-container">
+            <iframe title="Measles cases by vaccination status" aria-label="Stacked Bars" id="datawrapper-chart-6rApt" src="https://datawrapper.dwcdn.net/6rApt/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="201" data-external="1"></iframe>
+            <script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();</script>
+        </div>
+
+        <p>
+            Unvaccinated individuals represent almost all reported measles cases, 
+            demonstrating a clear correlation between measles vaccination status and the 
+            likelihood of contracting measles. These outcomes are consistent with estimates 
+            that two doses of measles vaccine protects 97% of those vaccinated, and highlights 
+            that measles outbreaks are prevented by measles vaccination.
+        </p>
+    </div>
+
+    <!-- Simplified Footer Section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section" style="width: 100%; max-width: 900px; margin: 0 auto;">
+                <div class="team-info">
+                    <!-- <strong>Research Team</strong><br> -->
+                    This collaborative interdisciplinary effort was conducted by a group of researchers at 
+        <a href="https://www.jhu.edu/" target="_blank">Johns Hopkins University</a> who are tracking and modeling 
+        the risk of reportable infectious diseases in the U.S. The team is led by 
+        <a href="https://publichealth.jhu.edu/faculty/497/william-john-moss" target="_blank">William Moss</a>, 
+        <a href="https://ventures.jhu.edu/news/lauren-gardner-covid-dashboard-lasker-prize/" target="_blank">Lauren Gardner</a> and 
+        <a href="https://publichealth.jhu.edu/faculty/3998/shaun-truelove" target="_blank">Shaun Truelove</a>, 
+        and includes additional team members across multiple JHU divisions, including 
+        <a href="https://publichealth.jhu.edu/" target="_blank">SPH</a>, 
+        <a href="https://engineering.jhu.edu/" target="_blank">WSE</a>, 
+        <a href="https://www.jhsph.edu/ivac/" target="_blank">IVAC</a>, 
+        <a href="https://systems.jhu.edu/" target="_blank">CSSE</a>, and 
+        <a href="https://govex.jhu.edu/" target="_blank">GovEx</a>.
+    </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright">
+                © 2025 Johns Hopkins University. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function setupMapToggle(containerId) {
+            const container = document.getElementById(containerId);
+            const buttons = container.querySelectorAll('.toggle-button');
+            
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    // Hide all maps
+                    const mapId = button.getAttribute('data-map');
+                    const mapContainer = container.nextElementSibling;
+                    const maps = mapContainer.querySelectorAll('.map-view');
+                    maps.forEach(map => map.classList.remove('active'));
+                    
+                    // Show selected map
+                    document.getElementById(mapId).classList.add('active');
+                });
+            });
+        }
+
+        // Initialize toggle functionality
+        setupMapToggle('firstMapToggle');
+        setupMapToggle('timeseriesToggle');
+    </script>
+</body>
+</html>
