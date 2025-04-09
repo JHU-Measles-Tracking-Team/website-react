@@ -3,7 +3,7 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 
 export default class MyDocument extends Document {
   render() {
-    const GTMID = process.env.NEXT_PUBLIC_GTM_ID;
+    const GTMID = process.env.NEXT_PUBLIC_GTM_ID || "G-7WZ4E6MPNX";
     return (
       <Html>
         <Head>
