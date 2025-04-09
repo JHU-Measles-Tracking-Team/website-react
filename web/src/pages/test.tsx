@@ -13,12 +13,12 @@ import useSmoothHashScroll from "util/hooks/useSmoothHashScroll";
 import { useRouter } from "next/router";
 import { homepageAnchors } from "data/navigation";
 import { MetaProps } from "components/shell/Meta/Meta";
-import DataWrapperEmbed from "components/DataWrapperEmbed";
-import DataWrapperTabs from "../components/ui/DataWrapperTabs/DataWrapperTabs";
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import SectionGraphs from "components/content/SectionGraphs/SectionGraphs";
+import Script from 'next/script';
+import DataWrapperScriptEmbed from "components/DataWrapperScriptEmbed";
 
 const metaData: MetaProps = {
   title: "JHU Measles Tracker",
@@ -52,7 +52,10 @@ const Home: FC<HomeProps> = ({ image }) => {
         image: image || metaData.image,
       }}
     >
-      <p>BOOP BOOP BOOP</p>
+      <DataWrapperScriptEmbed 
+        identifier="hAu4Z"
+        title="Measles Cases (Cumulative)"
+      />
     </Page>
   );
 };
